@@ -265,7 +265,7 @@ const tokenbutton= document.getElementById("token");
   } from 'https://unpkg.com/@web3modal/ethereum@2.5.0/dist/cdn/bundle.js'
   import { Web3Modal } from 'https://unpkg.com/@web3modal/html@2.5.0/dist/cdn/bundle.js'
   // Equivalent to importing from @wagmi/core
-  const { Chain,configureChains, createConfig,getAccount, watchAccount,getContract,writeContract,getPublicClient, parseEther,readContract,fetchBalance } = WagmiCore
+  const { Chain,configureChains, createConfig,getAccount, watchAccount,getContract,writeContract,getPublicClient,readContract,fetchBalance } = WagmiCore
   // Equivalent to importing from @wagmi/core/chains
 
   // Equivalent to importing from @wagmi/core/providers
@@ -363,13 +363,15 @@ async function handlePlay() {
   if (account.status!= 'connected'){
   handleClick();
   }
+  let valuee= BigInt(0.1*10**18);
+
   const { hash } = await writeContract({
 	  address: contractaddress,
 	  account: account.address,
 	  abi: abicontract,
-	  functionName: 'enterPool',
+	  functionName: "enterPool",
       args: [],
-	  value: 10000000000000000n,
+	  value: valuee,
 	})
               console.log(hash);
           
